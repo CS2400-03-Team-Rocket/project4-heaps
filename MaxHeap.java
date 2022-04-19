@@ -36,10 +36,6 @@ public final class MaxHeap<T extends Comparable<? super T>>
       integrityOK = true;
    } // end constructor
 
-   public boolean checkIntegrity(){
-       return integrityOK;
-   }
-
    public void add(T newEntry)
    {
    // See Segment 27.8.
@@ -134,5 +130,28 @@ public final class MaxHeap<T extends Comparable<? super T>>
    } // end clear
    
 // Private methods
-// . . .
+   private void checkIntegrity()
+   {
+      if (!integrityOK)
+         throw new SecurityException("MaxHeap object is corrupt.");
+   }
+
+   private void checkCapacity(int capacity)
+   {
+      if (capacity > MAX_CAPACITY)
+         throw new IllegalStateException("Attempt to create a heap whose capacity " +
+                                         "exeeds allowed maximum of " + MAX_CAPACITY);
+   }
+
+   private void ensureCapacity()
+   {
+      if (lastIndex >= heap.length - 1)
+      {
+         int newLength = 2 * heap.length;
+         checkCapacity(newLength);
+         heap = Arrays.copyOf(heap, newLength);
+      }
+   }
+
+// ...
 } // end MaxHeap
