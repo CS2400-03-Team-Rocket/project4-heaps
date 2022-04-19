@@ -21,5 +21,6 @@ public class MaxHeapDriver{
         FileWriter writer = new FileWriter("/Users/andre/Desktop/output.txt");
         writer.write(fileContent);
         writer.close();
+        System.out.println("number of swaps: " + maxHeap.getSwaps());
     }
 }
