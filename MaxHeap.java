@@ -72,35 +72,35 @@ public final class MaxHeap<T extends Comparable<? super T>>
    }
 
    private void reheap(int rootIndex)
-{
-   boolean done = false;
-   T orphan = heap[rootIndex];
-   int leftChildIndex = 2 * rootIndex;
-
-   while (!done && (leftChildIndex <= lastIndex) )
    {
-      int largerChildIndex = leftChildIndex; // Assume larger
-      int rightChildIndex = leftChildIndex + 1;
+      boolean done = false;
+      T orphan = heap[rootIndex];
+      int leftChildIndex = 2 * rootIndex;
 
-      if ( (rightChildIndex <= lastIndex) &&
+      while (!done && (leftChildIndex <= lastIndex) )
+      {
+         int largerChildIndex = leftChildIndex; // Assume larger
+         int rightChildIndex = leftChildIndex + 1;
+
+         if ( (rightChildIndex <= lastIndex) &&
             heap[rightChildIndex].compareTo(heap[largerChildIndex]) > 0)
-      {
+         {
          largerChildIndex = rightChildIndex;
-      } // end if
+         } // end if
 
-      if (orphan.compareTo(heap[largerChildIndex]) < 0)
-      {
-         heap[rootIndex] = heap[largerChildIndex];
-         rootIndex = largerChildIndex;
-         leftChildIndex = 2 * rootIndex;
-      }
-      else
-         done = true;
-   } // end while
+         if (orphan.compareTo(heap[largerChildIndex]) < 0)
+         {
+            heap[rootIndex] = heap[largerChildIndex];
+            rootIndex = largerChildIndex;
+            leftChildIndex = 2 * rootIndex;
+            swaps++;
+         }
+         else
+            done = true;
+      } // end while
 
-   heap[rootIndex] = orphan;
-} // end reheap
-
+      heap[rootIndex] = orphan;
+   } // end reheap
 
    public T removeMax()
    {
