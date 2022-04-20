@@ -38,6 +38,18 @@ public final class MaxHeap<T extends Comparable<? super T>>
       integrityOK = true;
    } // end constructor
 
+   public MaxHeap(T[] entries)
+   {
+      this(entries.length);
+      assert integrityOK = true;
+
+      for (int i = 0; i < entries.length; i++)
+         heap[i + 1] = entries[i];
+
+      for (int rootI = lastIndex / 2; rootI > 0; rootI--)
+         reheap(rootI);
+   } // end "optimal" constructor
+
    public void add(T newEntry)
    {
    // See Segment 27.8.
