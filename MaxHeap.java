@@ -181,10 +181,17 @@ public final class MaxHeap<T extends Comparable<? super T>>
       }
    }
 
+   public String toString10(){
+      String output = new String();
+      for(int i = 1; i < 11; i++){
+         output += heap[i] + ", ";
+      }
+      return output;
+   }
    public String toString(){
       String output = new String();
       for(int i = 1; i < getSize(); i++){
-         output += heap[i] + "\n";
+         output += heap[i] + ", ";
       }
       return output;
    }

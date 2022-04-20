@@ -16,12 +16,24 @@ public class MaxHeapDriver{
 
         String fileContent = "";
         //add the heap contents to fileContent
-        fileContent = maxHeap.toString();
+        fileContent = maxHeap.toString10();
 
         FileWriter writer = new FileWriter("output.txt");
+        writer.write("Heap built using sequential insertions: ");
         writer.write(fileContent);
+
+        for(int i = 1; i < 11; i++){
+            maxHeap.removeMax();
+        }
+        fileContent = maxHeap.toString10();
+
+        writer.write("\nNumber of swaps in the heap creation: " + maxHeap.getSwaps());
+
+        writer.write("\nHeap after 10 removals: ");
+        writer.write(fileContent);
+
         writer.close();
-        System.out.println("number of swaps: " + maxHeap.getSwaps());
+        
 
 
         maxHeapOptimalTest();
