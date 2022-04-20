@@ -2,7 +2,6 @@ import java.io.File;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.*;
 
 public class MaxHeapDriver{
     public static void main(String [] args) throws IOException{
@@ -25,8 +24,16 @@ public class MaxHeapDriver{
         System.out.println("number of swaps: " + maxHeap.getSwaps());
 
 
+        maxHeapOptimalTest();
+
+        
+    }
+
+    public static void maxHeapOptimalTest() throws IOException
+    {
         //CREATING HEAP USING OPTIMAL METHOD
-        Scanner scan2 = new Scanner(dataRandom);
+        File dataRandom2 = new File("data/data_random.txt");
+        Scanner scan2 = new Scanner(dataRandom2);
         String[] a = new String[100];
         int i = 0;
         while(scan2.hasNextLine()){
@@ -34,12 +41,14 @@ public class MaxHeapDriver{
             i++;
         }
         scan2.close();
-        MaxHeap<String> maxHeapOptimal = new MaxHeap<String>(a);
+        MaxHeap<String> maxHeapOptimal = new MaxHeap<>(a);
+        //String fileContent2 = "";
+        //fileContent2 = maxHeapOptimal.toString();
         String fileContent2 = maxHeapOptimal.toString();
-
+        System.out.print(fileContent2);
         FileWriter writer2 = new FileWriter("output2.txt");
         writer2.write(fileContent2);
         writer2.close();
-        System.out.println("number of swaps: " + maxHeapOptimal.getSwaps());
+        System.out.println("number of swaps: " + maxHeapOptimal.getSwapsOptimal());
     }
 }

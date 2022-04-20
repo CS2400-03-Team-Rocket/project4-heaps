@@ -12,6 +12,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
    private T[] heap;      // Array of heap entries; ignore heap[0]
    private int lastIndex; // Index of last entry and number of entries
    private int swaps;
+   private int swapsOptimal;
    private boolean integrityOK = false;
 	private static final int DEFAULT_CAPACITY = 25;
 	private static final int MAX_CAPACITY = 10000;
@@ -44,10 +45,14 @@ public final class MaxHeap<T extends Comparable<? super T>>
       assert integrityOK = true;
 
       for (int i = 0; i < entries.length; i++)
+      {
          heap[i + 1] = entries[i];
-
+         //System.out.print(entries[i] + " ");
+      }
       for (int rootI = lastIndex / 2; rootI > 0; rootI--)
+      {
          reheap(rootI);
+      }
    } // end "optimal" constructor
 
    public void add(T newEntry)
@@ -69,6 +74,10 @@ public final class MaxHeap<T extends Comparable<? super T>>
 
    public int getSwaps(){
       return swaps;
+   }
+
+   public int getSwapsOptimal(){
+      return swapsOptimal;
    }
 
    private void reheap(int rootIndex)
@@ -93,7 +102,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
             heap[rootIndex] = heap[largerChildIndex];
             rootIndex = largerChildIndex;
             leftChildIndex = 2 * rootIndex;
-            swaps++;
+            swapsOptimal++;
          }
          else
             done = true;
