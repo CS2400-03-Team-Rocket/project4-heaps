@@ -48,11 +48,11 @@ public final class MaxHeap<T extends Comparable<? super T>>
       for (int i = 0; i < entries.length; i++)
       {
          heap[i + 1] = entries[i];
-         //System.out.print(entries[i] + " ");
       }
       for (int rootI = lastIndex / 2; rootI > 0; rootI--)
       {
          reheap(rootI);
+         
       }
    } // end "optimal" constructor
 

@@ -19,6 +19,7 @@ public class MaxHeapDriver{
         fileContent = maxHeap.toString10();
 
         FileWriter writer = new FileWriter("output.txt");
+        writer.write("SEQUENTIAL INSERTIONS\n");
         writer.write("Heap built using sequential insertions: ");
         writer.write(fileContent);
 
@@ -28,7 +29,6 @@ public class MaxHeapDriver{
         fileContent = maxHeap.toString10();
 
         writer.write("\nNumber of swaps in the heap creation: " + maxHeap.getSwaps());
-
         writer.write("\nHeap after 10 removals: ");
         writer.write(fileContent);
 
@@ -45,22 +45,24 @@ public class MaxHeapDriver{
         Scanner scan2 = new Scanner(dataRandom2);
         String[] a = new String[100];
         int i = 0;
-        
         while(scan2.hasNextLine()){
             a[i] = scan2.nextLine();
             i++;
         }
         scan2.close();
-        MaxHeap<String> maxHeapOptimal = new MaxHeap<>(a);
-        String max = maxHeapOptimal.getMax();
-        System.out.println(max);
-        //String fileContent2 = "";
-        //fileContent2 = maxHeapOptimal.toString();
-        String fileContent2 = maxHeapOptimal.toString();
-        System.out.print(fileContent2);
-        FileWriter writer2 = new FileWriter("output2.txt");
-        writer2.write(fileContent2);
-        writer2.close();
-        System.out.println("number of swaps: " + maxHeapOptimal.getSwapsOptimal());
+        MaxHeap<String> maxHeapOptimal = new MaxHeap<String>(a);
+        String fileContent2 = maxHeapOptimal.toString10();
+        FileWriter writer = new FileWriter("output2.txt");
+        writer.write("OPTIMAL METHOD\n");
+        writer.write("Heap built using optimal method: ");
+        writer.write(fileContent2);
+        writer.write("\nNumber of swaps in the heap creation: " + maxHeapOptimal.getSwapsOptimal());
+        for(int j = 1; j < 11; j++){
+            maxHeapOptimal.removeMax();
+        }
+        fileContent2 = maxHeapOptimal.toString10();
+        writer.write("\nHeap after 10 removals: ");
+        writer.write(fileContent2);
+        writer.close();
     }
 }
