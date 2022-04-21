@@ -19,31 +19,30 @@ public final class HeapPriorityQueue<T extends Comparable<? super T>>
 	{ 
 		pq.add(newEntry);
 	} // end add
+
 	public T remove()
 	{
-		return null;
-	}
+		return pq.removeMax();
+	}//end remove
 
 	public T peek()
 	{
-		return null;
-	}
+		return pq.getMax();
+	}//end peek
  
 	public boolean isEmpty()
 	{
-		return true;
-	}
+		return pq.isEmpty();
+	}//end isEmpty
  
 	public int getSize()
 	{
-		return 0;
-	}
+		return pq.getSize();
+	}//end getSize
  
 	public void clear()
 	{
-		
-	}
-
-/* < Implementations of remove, peek, isEmpty, getSize, and clear are here. >
-   . . . */
+		pq.clear();
+	}//end clear
+	
 } // end HeapPriorityQueue
