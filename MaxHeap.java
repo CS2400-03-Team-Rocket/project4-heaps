@@ -42,6 +42,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
    public MaxHeap(T[] entries)
    {
       this(entries.length);
+      lastIndex = entries.length;
       assert integrityOK = true;
 
       for (int i = 0; i < entries.length; i++)
