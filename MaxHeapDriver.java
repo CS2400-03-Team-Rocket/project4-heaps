@@ -33,11 +33,8 @@ public class MaxHeapDriver{
         writer.write(fileContent);
 
         writer.close();
-        
-
 
         maxHeapOptimalTest();
-
         
     }
 
@@ -48,12 +45,15 @@ public class MaxHeapDriver{
         Scanner scan2 = new Scanner(dataRandom2);
         String[] a = new String[100];
         int i = 0;
+        
         while(scan2.hasNextLine()){
             a[i] = scan2.nextLine();
             i++;
         }
         scan2.close();
         MaxHeap<String> maxHeapOptimal = new MaxHeap<>(a);
+        String max = maxHeapOptimal.getMax();
+        System.out.println(max);
         //String fileContent2 = "";
         //fileContent2 = maxHeapOptimal.toString();
         String fileContent2 = maxHeapOptimal.toString();
